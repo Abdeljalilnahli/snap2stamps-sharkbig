@@ -102,9 +102,13 @@ for acdatefolder in sorted(os.listdir(masterfolder)):
     splitmasterfolder=splitfolder+'/'+acdatefolder
     if not os.path.exists(splitmasterfolder):
                 os.makedirs(splitmasterfolder)
+
+
+
     IWlist=[ 'IW1','IW2','IW3'] 
     for IW in IWlist:
 	outputname=acdatefolder+'_'+IW+'.dim'
+
     	if len(files) == 1 :
 		graphxml=GRAPH+'/master_split_applyorbit.xml'
        		# Read in the file
@@ -120,6 +124,9 @@ for acdatefolder in sorted(os.listdir(masterfolder)):
        		# # Write the file out again
         	with open(graph2run, 'w') as file:
            		file.write(filedata)
+
+
+
     	if len(files) == 2 :
 		graphxml=GRAPH+'/master_assemble_split_applyorbit2.xml'
         	with open(graphxml, 'r') as file :

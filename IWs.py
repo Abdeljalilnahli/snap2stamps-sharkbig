@@ -1,20 +1,7 @@
 import numpy as np
 import zipfile,glob
-from interception import isInterception
 from inSide import inSide
-import matplotlib.pyplot as plt
 
-
-file='s1a-iw{}-slc-vv-20191231t100110-20191231t100138-030591-038128-00{}.xml'
-vv=glob.glob("metadata/*iw[1-3]-slc-vv*")
-
-# lon0=120.085,121.0312
-# lat0=23.918,24.83 
-# polygon=[[lon0[0],lat0[0]],[lon0[1],lat0[0]],[ lon0[1], lat0[1] ], [lon0[0],lat0[1]]]
-# color=['r','g','b']
-
-
-margin=[]
 for iw in range(len(vv)):
 	SWs=open(vv[iw],'r')
 	count=0
