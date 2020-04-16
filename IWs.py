@@ -39,8 +39,8 @@ polygon=[[float(LONMIN),float(LATMIN)],[float(LONMIN),float(LATMAX)],[float(LONM
 
 zips=sorted(glob.glob(slavefolder+"/*/*.zip"))
 for slave in zips:
-	slavefolder=slave.split("/")[-2]
-	slave=os.path.join("slaves",slavefolder,slave.split("/")[-1])
+	# slavefolder=slave.split("/")[-2]
+	# slave=os.path.join("slaves",slavefolder,slave.split("/")[-1])
 	try:
 		lsname=zipfile.ZipFile(slave).namelist()	
 	except:

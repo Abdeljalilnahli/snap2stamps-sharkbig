@@ -80,10 +80,26 @@ out_file.write(bar_message)
 if IW=="IW_list":
     import IWs
 else:
-    with open("logs/IWs","w") as make_ls:
+    with open("logs/IW_list","w") as make_ls:
         for i  in sorted(glob.glob(slavefolder+"/*/*.zip")):
             print(i+"\t"+IW+"\t1\t10")
             make_ls.write(i+"\t"+IW+"\t1\t10\n")
+
+acdatefolder=[]
+IW=[]
+min_bst=[]
+max_bst=[]
+with open("logs/IW_list",'r') as fp:
+    print(fp)
+    for i in fp.readlines():
+        print("hello",i)
+        i=i.split()
+        acdatefolder+=[i[0]]
+        IW+=[i[1]]
+        min_bst+=[i[2]]
+        max_bst+=[i[3]]
+print(IW,min_bst)
+sys.exit()
 
 
 k=0
@@ -144,12 +160,11 @@ for acdatefolder in sorted(os.listdir(slavefolder)):
         filedata = filedata.replace('INPUTFILE1', files[0])
 
 	filedata = filedata.replace('INPUTFILE2', files[1])
-	# filedata = filedata.replace('IWs',IW)
-
-	filedata = filedata.replace('OUTPUTFILE',splitslavefolder+'/'+outputname)
-        # Write the file out again
-        with open(graph2run, 'w') as file:
-           file.write(filedata)
+	filedata = filedata.replace('IWs',IW)
+    # filedata=filedata.replace("IWs",IW)
+    filedata = filedata.replace('OUTPUTFILE',splitslavefolder+'/'+outputname)
+    with open(graph2run, 'w') as file:
+        file.write(filedata)
 
 
 
