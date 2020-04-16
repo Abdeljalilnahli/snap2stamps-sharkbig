@@ -21,8 +21,8 @@ import shlex
 import time
 import zipfile
 
-inputfile = sys.argv[1]
-
+# inputfile = sys.argv[1]
+inputfile="project.conf"
 bar_message='\n#####################################################################\n'
 
 # Getting configuration variables from inputfile
@@ -77,6 +77,13 @@ out_file.write(message)
 print bar_message
 out_file.write(bar_message)
 
+if IW=="IW_list":
+    import IWs
+else:
+    with open("logs/IWs","w") as make_ls:
+        for i  in sorted(glob.glob(slavefolder+"/*/*.zip")):
+            print(i+"\t"+IW+"\t1\t10")
+            make_ls.write(i+"\t"+IW+"\t1\t10\n")
 
 
 k=0
@@ -88,16 +95,17 @@ for acdatefolder in sorted(os.listdir(slavefolder)):
     print os.path.join(slavefolder, acdatefolder)
     out_file.write(str(os.path.join(slavefolder, acdatefolder))+'\n')
 
+    # zip file to read --> should be replace by the code from 
     files = glob.glob(os.path.join(slavefolder, acdatefolder) + '/*.zip')
-    print files
     out_file.write(str(files)+'\n')
-
 
     head, tail = os.path.split(os.path.join(str(files)))
     splitslavefolder=splitfolder+'/'+tail[17:25]
     if not os.path.exists(splitslavefolder):
                 os.makedirs(splitslavefolder)
     outputname=tail[17:25]+'_'+IW+'.dim'
+
+
 
     # slave_split_applyorbit
     '''

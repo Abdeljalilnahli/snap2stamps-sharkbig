@@ -5,7 +5,8 @@ import zipfile, glob, os
 from inSide import inSide
 from sys import argv
 
-inputfile=argv[1]
+# inputfile=argv[1]
+inputfile="project.conf"
 fp=open(inputfile)
 for line in fp.readlines():
 	if "PROJECTFOLDER" in line:
@@ -37,15 +38,14 @@ nc=21
 polygon=[[float(LONMIN),float(LATMIN)],[float(LONMIN),float(LATMAX)],[float(LONMAX),float(LATMAX)],[float(LONMAX),float(LATMIN)]]
 
 zips=sorted(glob.glob(slavefolder+"/*/*.zip"))
-
 for slave in zips:
-	print(slave,end="\t")
-	log.write(slave+"\t")
+	slavefolder=slave.split("/")[-2]
+	slave=os.path.join("slaves",slavefolder,slave.split("/")[-1])
 	try:
 		lsname=zipfile.ZipFile(slave).namelist()	
 	except:
 		print('iw1\t-1\t-1\tiw2\t-1\t-1\tiw3\t-1\t-1')
-		log.write('\tiw1\t-1\t-1\tiw2\t-1\t-1\tiw3\t-1\t-1\n')
+		log.write(slave+'\tiw1\t-1\t-1\tiw2\t-1\t-1\tiw3\t-1\t-1\n')
 		continue
 	vv= []
 	for i in lsname:
@@ -90,10 +90,8 @@ for slave in zips:
 					minbst=bst
 
 		if minbst==12: minbst=-1
-		print(vv[iw][88:91]+  "\t" + "%i\t%i"%(minbst,maxbst+1), end="\t")
-		log.write(vv[iw][88:91]+ "\t" + "%i\t%i"%(minbst,maxbst+1)+"\t")
+		print(slave,"\t",vv[iw][88:91].upper()+  "\t" + "%i\t%i"%(minbst,maxbst+1))
+		log.write(slave+"\t"+vv[iw][88:91].upper()+ "\t" + "%i\t%i"%(minbst,maxbst+1)+"\n")
 		SWs.close()
-	print()
-	log.write("\n")
 
 
