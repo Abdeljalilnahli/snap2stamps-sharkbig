@@ -31,7 +31,7 @@ try:
                 if "PROJECTFOLDER" in line:
                         PROJECT = line.split('=')[1].strip()
                         print PROJECT
-                if "IW1" in line:
+                if "IWs" in line:
                         IW = line.split('=')[1].strip()
                         print IW
 		if "POLARISATION" in line:

@@ -5,9 +5,7 @@ import zipfile, glob, os
 from inSide import inSide
 from sys import argv
 
-
-inputfile="project.conf"
-#argv[1]
+inputfile=argv[1]
 fp=open(inputfile)
 for line in fp.readlines():
 	if "PROJECTFOLDER" in line:
@@ -24,8 +22,11 @@ for line in fp.readlines():
 
 # check if log directory exits.
 logfolder=PROJECT+'/logs'
-# if not os.path.exists(logfolder):
-#                 os.makedirs(logfolder)
+slavefolder=PROJECT+'/slaves'
+
+if not os.path.exists(logfolder):
+                os.makedirs(logfolder)
+                
 log=open(logfolder+"/swath_list",'w')
 
 
@@ -35,7 +36,7 @@ nc=21
 # polygon='POLYGON (('+LONMIN+' '+LATMIN+','+LONMAX+' '+LATMIN+','+LONMAX+' '+LATMAX+','+LONMIN+' '+LATMAX+','+LONMIN+' '+LATMIN+'))'
 polygon=[[float(LONMIN),float(LATMIN)],[float(LONMIN),float(LATMAX)],[float(LONMAX),float(LATMAX)],[float(LONMAX),float(LATMIN)]]
 
-zips=sorted(glob.glob("slaves/*/*.zip"))
+zips=sorted(glob.glob(slavefolder+"/*/*.zip"))
 
 for slave in zips:
 	print(slave,end="\t")
