@@ -27,7 +27,7 @@ slavefolder=PROJECT+'/slaves'
 if not os.path.exists(logfolder):
                 os.makedirs(logfolder)
                 
-log=open(logfolder+"/swath_list",'w')
+log=open(logfolder+"/IW_list",'w')
 
 
 
