@@ -91,7 +91,6 @@ for slave in zips:
 		if minbst==12: minbst=-1
 		print(vv[iw][88:91]+  "\t" + "%i\t%i"%(minbst,maxbst+1), end="\t")
 		log.write(vv[iw][88:91]+ "\t" + "%i\t%i"%(minbst,maxbst+1)+"\t")
-		# plt.plot(lons,lats,'o',ms=1)
 		SWs.close()
 	print()
 	log.write("\n")
