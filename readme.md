@@ -20,7 +20,10 @@ folk from https://github.com/mdelgadoblasco/snap2stamps
 2. Printing/Logging wihch swath and burst to use, and the result log is preserved in "logs/IW_list"
 `$ python IWs.py proj.conf`
 
-### reference
+### Reference
 1. https://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
 2. Jose Manuel Delgado Blasco. Sentinel Application Platform asc InSAR processor fro PSI processing with StaMPS, 2018.
 3. Dipankar Mandal, Divya Sekhar Vaka, Narayana Rao Bhogapurapu, V. S. K. Vanama, Vineet Kuma, Y. S. Rao, Avik Bhattacharya. Semtinel-1 SLC preprocessing workflow from polarimetric application: A generic practice for generating dual-pool covariance elements in SNAP S-1 toolbox, 2019.
+
+### Future Work
+1. Automatically merge difference swath.
