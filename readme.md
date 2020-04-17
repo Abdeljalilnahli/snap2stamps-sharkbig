@@ -1,7 +1,7 @@
 
 # snap2stamps/automatical-splitting
 
-*this is the **test** version modified from snap2stamps code to auto choose burst and swath durring splitting.*
+*this is the **test** version modified from snap2stamps code to auto-choose burst and swath durring splitting.*
 
 folk from https://github.com/mdelgadoblasco/snap2stamps
 
