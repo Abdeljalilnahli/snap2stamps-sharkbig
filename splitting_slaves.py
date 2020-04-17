@@ -13,6 +13,7 @@
 # case 1: 1 swath in one slice 
 # case 2: 2 swath in one slice -> apply slice assembly 
 # case 3: 1 swath in two slice -> need merge
+# 20200417 Add feature: automatically choose subswath by Jun-Yan Chen.
 
 import os
 from pathlib import Path
@@ -23,8 +24,7 @@ import shlex
 import time
 import zipfile
 from IWs import getBurst
-# inputfile = sys.argv[1]
-inputfile="project.conf"
+inputfile = sys.argv[1]
 bar_message='\n#####################################################################\n'
 
 # Getting configuration variables from inputfile
