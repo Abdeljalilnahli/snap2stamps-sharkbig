@@ -16,7 +16,7 @@ folk from https://github.com/mdelgadoblasco/snap2stamps
 ### Usage
 
 1. Running snap2stamps procedure please refers to Manual 4.1 - 4.5.
-2. Replace script at section 4.2 with the following command:
+2. Replace command at section 4.2 with the following command:
 ```
 $ python splitting_slaves_readIWs.py project.conf
 ```
