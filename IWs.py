@@ -1,12 +1,13 @@
 #!/usr/bin/python
+# the function getButst is only for one slice.
+
 from __future__ import print_function
 import numpy as np
 import zipfile, glob, os
 from inSide import inSide
 from sys import argv
 
-# inputfile=argv[1]
-inputfile="project.conf"
+inputfile=argv[1]
 fp=open(inputfile)
 for line in fp.readlines():
 	if "PROJECTFOLDER" in line:
@@ -27,7 +28,6 @@ slavefolder=PROJECT+'/slaves'
 
 if not os.path.exists(logfolder):
                 os.makedirs(logfolder)
-                
 log=open(logfolder+"/IW_list",'w')
 
 
@@ -37,16 +37,13 @@ nc=21
 # polygon='POLYGON (('+LONMIN+' '+LATMIN+','+LONMAX+' '+LATMIN+','+LONMAX+' '+LATMAX+','+LONMIN+' '+LATMAX+','+LONMIN+' '+LATMIN+'))'
 polygon=[[float(LONMIN),float(LATMIN)],[float(LONMIN),float(LATMAX)],[float(LONMAX),float(LATMAX)],[float(LONMAX),float(LATMIN)]]
 
-zips=sorted(glob.glob(slavefolder+"/*/*.zip"))
-for slave in zips:
-	# slavefolder=slave.split("/")[-2]
-	# slave=os.path.join("slaves",slavefolder,slave.split("/")[-1])
+def getBurst(poly,fzip):
+	_bst=[]
+
 	try:
-		lsname=zipfile.ZipFile(slave).namelist()	
+		lsname=zipfile.ZipFile(fzip).namelist()	 # open zipfile
 	except:
-		print('iw1\t-1\t-1\tiw2\t-1\t-1\tiw3\t-1\t-1')
-		log.write(slave+'\tiw1\t-1\t-1\tiw2\t-1\t-1\tiw3\t-1\t-1\n')
-		continue
+		_bst=[[-1,-1],[-1,-1],[-1,-1]]
 	vv= []
 	for i in lsname:
 		seg=i.split('/')
@@ -54,9 +51,8 @@ for slave in zips:
 			if "vv" in seg[2]:
 				vv.append(i)
 	vv=sorted(vv)
-	# print(slave,vv[0])
 	for iw in range(len(vv)):
-		SWs=zipfile.ZipFile(slave).open(vv[iw],'r')
+		SWs=zipfile.ZipFile(fzip).open(vv[iw],'r')
 		count=0
 		line=True
 		tag=False
@@ -78,20 +74,33 @@ for slave in zips:
 				lons.append(lon)
 				count+=1
 		# symbols for ascending but for descending works
-		
-		maxbst=-2
+		maxbst=-1
 		minbst=12
 		for i in zip(lons,lats):
-			if inSide(polygon,[i[0],i[1]]):
+			if inSide(poly,[i[0],i[1]]):
 				bst=lats.index(i[1])//21
 				if bst>=maxbst:
-					maxbst=bst
+					maxbst=bst+1
 				if bst<=minbst:
 					minbst=bst
+		if maxbst==11: maxbst=10
+		if minbst==0 : minbst=1
+		if minbst==12: minbst=-1 
 
-		if minbst==12: minbst=-1
-		print(slave,"\t",vv[iw][88:91].upper()+  "\t" + "%i\t%i"%(minbst,maxbst+1))
-		log.write(slave+"\t"+vv[iw][88:91].upper()+ "\t" + "%i\t%i"%(minbst,maxbst+1)+"\n")
+		# print(slave," ",vv[iw][88:91].upper()+  " %i %i"%(minbst,maxbst+1))
+		_bst.append([minbst,maxbst])
 		SWs.close()
+		
+	return dict(zip(vv,_bst))
 
 
+
+if __name__ == "__main__":
+	zips=sorted(glob.glob(slavefolder+"/*/*.zip"))
+	for slave in zips:
+		ans=getBurst(polygon,slave)
+		for _vv in ans:
+			print(slave,_vv[88:91].upper(), ans[_vv][0], ans[_vv][1], file=log)
+			print(slave,_vv[88:91].upper(), ans[_vv][0], ans[_vv][1])
+
+log.close()
