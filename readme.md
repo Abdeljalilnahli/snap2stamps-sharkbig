@@ -29,7 +29,7 @@ folk from https://github.com/mdelgadoblasco/snap2stamps
 1. Automatically merge difference swath.
 
 
-＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+======================================================================
 # snap2stamps <a href="https://doi.org/10.5281/zenodo.1308687"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1308687.svg" alt="DOI"></a> 
 
 Using SNAP as InSAR processor for StaMPS
