@@ -4,7 +4,7 @@
     <operator>Read</operator>
     <sources/>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>/home/junyanchen/Desktop/IW_test/slaves/20160321/S1A_IW_SLC__1SDV_20160321T100019_20160321T100049_010466_00F887_F2AA.zip</file>
+      <file>/home/junyanchen/Desktop/IW_test/slaves/20160601/S1A_IW_SLC__1SDV_20160601T100023_20160601T100052_011516_011918_F6FC.zip</file>
     </parameters>
   </node>
   <node id="TOPSAR-Split">
@@ -13,10 +13,10 @@
       <sourceProduct refid="Read"/>
     </sources>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <subswath>IW3</subswath>
+      <subswath>IW1</subswath>
       <selectedPolarisations>VV</selectedPolarisations>
-      <firstBurstIndex>1</firstBurstIndex>
-      <lastBurstIndex>10</lastBurstIndex>
+      <firstBurstIndex>6</firstBurstIndex>
+      <lastBurstIndex>8</lastBurstIndex>
       <wktAoi/>
     </parameters>
   </node>
@@ -37,7 +37,7 @@
       <sourceProduct refid="Apply-Orbit-File"/>
     </sources>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
-      <file>/home/junyanchen/Desktop/IW_test/split/20160321/20160321_IW3.dim</file>
+      <file>/home/junyanchen/Desktop/IW_test/split/20160601/20160601_IW_list.dim</file>
       <formatName>BEAM-DIMAP</formatName>
     </parameters>
   </node>
