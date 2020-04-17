@@ -14,11 +14,15 @@ folk from https://github.com/mdelgadoblasco/snap2stamps
 4. graphs/slave_split_applyorbit_readIWs.xml
 
 ### Usage
-1. Automatically choose subswath and IWs with respect to the region designated from the  project.conf.
-`$ python splitting_slave_readIWs.py proj.conf`
 
-2. Printing/Logging wihch swath and burst to use, and the result log is preserved in "logs/IW_list".
-`$ python IWs.py proj.conf`
+1. Running snap2stamps procedure please refers to Manual 4.1 - 4.5.
+2. Replace script at section 4.2 with the following command:
+```
+$ python splitting_slaves_readIWs.py project.conf
+```
+
+2. Run command below to see which swath and burst is used in automatically splitting.
+`$ python IWs.py project.conf`
 
 ### Reference
 1. https://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
