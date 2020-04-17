@@ -17,10 +17,14 @@ folk from https://github.com/mdelgadoblasco/snap2stamps
 
 1. Running snap2stamps procedure please refers to Manual 4.1 - 4.5.
 2. Replace script at section 4.2 with the following command:
-```$ python splitting_slaves_readIWs.py project.conf```
+```
+$ python splitting_slaves_readIWs.py project.conf
+```
 
 2. Run command below to see which swath and burst is used in automatically splitting.
-```$ python IWs.py project.conf```
+```
+$ python IWs.py project.conf
+```
 
 ### Reference
 1. https://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/
