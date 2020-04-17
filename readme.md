@@ -17,7 +17,7 @@ folk from https://github.com/mdelgadoblasco/snap2stamps
 1. Automatically choose subswath and IWs with respect to the region designated from the  project.conf.
 `$ python splitting_slave_readIWs.py proj.conf`
 
-2. Printing/Logging wihch swath and burst to use, and the result log is preserved in "logs/IW_list"
+2. Printing/Logging wihch swath and burst to use, and the result log is preserved in "logs/IW_list".
 `$ python IWs.py proj.conf`
 
 ### Reference
